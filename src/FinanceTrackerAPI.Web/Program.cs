@@ -1,34 +1,36 @@
-using Microsoft.OpenApi.Models;
+using Scalar.AspNetCore;
+using FinanceTrackerAPI.Web.APIs;
 using FinanceTrackerAPI.Core.Utilities.Configuration;
 using FinanceTrackerAPI.Core.Utilities.Configuration.Sections;
 
 var builder = WebApplication.CreateBuilder(args);
 Documentation documentation = AppSettings.Documentation!;
 
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc(
-        documentation.Name, 
-        new OpenApiInfo { 
-            Title = documentation.Title,
-            Version = documentation.Version,
-            Description = documentation.Description,
-        }
-    );
-});
+// Add OpenAPI dependencies
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
+    // Set up endpoint for serving OpenAPI document
+    app.MapOpenApi();
+
+    // Set up interactive UI for Open API document
+    app.MapScalarApiReference(options =>
     {
-        c.InjectStylesheet("/swagger-ui/SwaggerDark.css");
+        options.DefaultFonts = false;
+        options.Title = documentation.Title;
     });
+
+    // Redirect for OpenAPI view
+    app.MapGet("/", () => Results.Redirect("/scalar/v1"))
+        .ExcludeFromDescription();
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+
+// Register /transaction APIs
+app.MapTransactionAPIs();
 
 app.Run();
