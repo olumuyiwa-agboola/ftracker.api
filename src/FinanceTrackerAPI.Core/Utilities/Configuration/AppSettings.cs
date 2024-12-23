@@ -27,5 +27,7 @@ namespace FinanceTrackerAPI.Core.Utilities.Configuration
         }
 
         public static Documentation? Documentation => GetAppSettings().GetSection(nameof(Documentation)).Get<Documentation>();
+        
+        public static ConnectionStrings? ConnectionStrings => GetAppSettings().GetSection(nameof(ConnectionStrings)).Get<ConnectionStrings>();
     }
 }
