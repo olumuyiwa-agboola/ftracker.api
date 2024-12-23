@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35521.163 d17.12
+VisualStudioVersion = 17.12.35521.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceTrackerAPI.Web", "src\FinanceTrackerAPI.Web\FinanceTrackerAPI.Web.csproj", "{6EA478C8-AF73-472F-BFCC-150144188BAE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceTrackerAPI.Core", "src\FinanceTrackerAPI.Core\FinanceTrackerAPI.Core.csproj", "{72885FC9-EA8A-4469-BC5D-EC475F31FDEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceTrackerAPI.Infrastructure", "src\FinanceTrackerAPI.Infrastructure\FinanceTrackerAPI.Infrastructure.csproj", "{281AE84C-4DFD-4612-ABEE-3975B37AD8B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{72885FC9-EA8A-4469-BC5D-EC475F31FDEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72885FC9-EA8A-4469-BC5D-EC475F31FDEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72885FC9-EA8A-4469-BC5D-EC475F31FDEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281AE84C-4DFD-4612-ABEE-3975B37AD8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281AE84C-4DFD-4612-ABEE-3975B37AD8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281AE84C-4DFD-4612-ABEE-3975B37AD8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281AE84C-4DFD-4612-ABEE-3975B37AD8B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
