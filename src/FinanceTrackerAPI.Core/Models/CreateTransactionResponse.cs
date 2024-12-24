@@ -4,16 +4,12 @@ namespace FinanceTrackerAPI.Core.Models
 {
     public record CreateTransactionResponse
     {
-        public CreateTransactionResponse(Transaction transaction)
+        public CreateTransactionResponse()
         {
-            TransactionDetails = transaction;
             Message = "Transaction created successfully!";
         }
 
         [Description("API response message")]
         public string Message { get; init; }
-
-        [Description("Details of the newly created transaction")]
-        public Transaction TransactionDetails { get; init; }
     }
 }

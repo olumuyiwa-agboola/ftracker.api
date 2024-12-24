@@ -14,7 +14,7 @@ namespace FinanceTrackerAPI.Core.Services
             int result = await transactionsRepository.AddTransaction(transaction);
 
             if (result == 1)
-                return new CreateTransactionResponse(transaction);
+                return new CreateTransactionResponse();
             else
                 return Error.UnprocessableEntity();
         }
