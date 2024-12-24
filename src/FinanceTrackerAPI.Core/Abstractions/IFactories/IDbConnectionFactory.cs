@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace FinanceTrackerAPI.Core.Abstractions.IConnectionFactories
+namespace FinanceTrackerAPI.Core.Abstractions.IFactories
 {
     public interface IDbConnectionFactory
     {

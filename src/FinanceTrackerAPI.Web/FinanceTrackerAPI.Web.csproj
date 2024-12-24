@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinanceTrackerAPI.Core\FinanceTrackerAPI.Core.csproj" />
+    <ProjectReference Include="..\FinanceTrackerAPI.Infrastructure\FinanceTrackerAPI.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

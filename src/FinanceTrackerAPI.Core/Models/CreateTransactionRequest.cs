@@ -3,23 +3,23 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FinanceTrackerAPI.Core.Models
 {
-    public record CreateTransactionRequest(DateOnly Date, double Amount, string Description, TransactionType Type, TransactionCategory Category)
+    public record CreateTransactionRequest(string Date, float Amount, string Description, TransactionType Type, TransactionCategory Category)
     {
         [Description("The day the transaction happened")]
-        public DateOnly Date { get; set; } = Date;
+        public string Date { get; init; } = Date;
 
         [Description("The amount involved in the transaction")]
-        public double Amount { get; set; } = Amount;
+        public float Amount { get; init; } = Amount;
+
+        [Description("The type of the transaction")]
+        public TransactionType Type { get; init; } = Type;
 
         [MaxLength(20)]
         [RegularExpression("^[a-zA-Z]+$")]
         [Description("A description of the transaction")]
-        public string Description { get; set; } = Description;
-
-        [Description("The type of the transaction")]
-        public TransactionType Type { get; set; } = Type;
+        public string Description { get; init; } = Description;
 
         [Description("The category of the transaction")]
-        public TransactionCategory Category { get; set; } = Category;
+        public TransactionCategory Category { get; init; } = Category;
     }
 }

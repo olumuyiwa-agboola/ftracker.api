@@ -2,7 +2,7 @@
 using System.Data;
 using FinanceTrackerAPI.Core.Models;
 using FinanceTrackerAPI.Core.Abstractions.IRepositories;
-using FinanceTrackerAPI.Core.Abstractions.IConnectionFactories;
+using FinanceTrackerAPI.Core.Abstractions.IFactories;
 
 namespace FinanceTrackerAPI.Infrastructure.Repositories
 {
@@ -19,8 +19,8 @@ namespace FinanceTrackerAPI.Infrastructure.Repositories
             parameters.Add("Category", transaction.Category);
             parameters.Add("Description", transaction.Description);
 
-            string query = @"INSERT INTO Transactions (TransactionId, TransactionDate, TransactionType, TransactionAmount, 
-                    TransactionCategory, TransactionDescription) VALUES (@Id, @Date, @Type, @Amount, @Category, @Description)";
+            string query = @"INSERT INTO Transactions (Id, Date, Type, Amount, Category, 
+                    Description) VALUES (@Id, @Date, @Type, @Amount, @Category, @Description)";
 
             using IDbConnection dbConnection = _dbConnectionFactory.CreateTransactionsDbConnection();
 
@@ -55,11 +55,13 @@ namespace FinanceTrackerAPI.Infrastructure.Repositories
 
             parameters.Add("TransactionId", transactionId);
 
-            string query = "SELECT * FROM Transactions WHERE TransactionId = @TransactionId";
+            string query = "SELECT * FROM Transactions WHERE Id = @TransactionId";
 
             using IDbConnection dbConnection = _dbConnectionFactory.CreateTransactionsDbConnection();
 
-            return (await dbConnection.QueryAsync<Transaction>(query, parameters)).FirstOrDefault();
+            Transaction? transaction = (await dbConnection.QueryAsync<Transaction>(query, parameters)).FirstOrDefault();
+
+            return transaction;
         }
 
         public async Task<int> UpdateTransaction(Transaction transaction)

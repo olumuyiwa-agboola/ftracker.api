@@ -2,24 +2,46 @@
 
 namespace FinanceTrackerAPI.Core.Models
 {
-    public record Transaction(string Id, DateOnly Date, double Amount, string Description, TransactionType Type, TransactionCategory Category)
+    public record Transaction
     {
+        public Transaction() {}
+
+        public Transaction(CreateTransactionRequest request)
+        {
+            Date = request.Date;
+            Amount = request.Amount;
+            Description = request.Description;
+            Type = Enum.GetName(request.Type)!;
+            Category = Enum.GetName(request.Category)!;
+            Id = string.Concat(Enum.GetName(request.Type)!.AsSpan(0, 1), new Random().Next(1000, 10000).ToString());
+        }
+
+        public Transaction(UpdateTransactionRequest request)
+        {
+            Id = request.Id;
+            Date = request.Date;
+            Amount = request.Amount;
+            Description = request.Description;
+            Type = Enum.GetName(request.Type)!;
+            Category = Enum.GetName(request.Category)!;
+        }
+
         [Description("The unique identifier of the transaction, assigned by the system when the transaction is created")]
-        public string Id { get; set; } = Id;
+        public string? Id { get; set; }
 
         [Description("The day the transaction happened")]
-        public DateOnly Date { get; set; } = Date;
+        public string? Date { get; set; }
 
         [Description("The amount involved in the transaction")]
-        public double Amount { get; set; } = Amount;
+        public double Amount { get; set; }
 
         [Description("A description of the transaction")]
-        public string Description { get; set; } = Description;
+        public string? Description { get; set; }
 
         [Description("The type of the transaction")]
-        public TransactionType Type { get; set; } = Type;
+        public string? Type { get; set; }
 
         [Description("The category of the transaction")]
-        public TransactionCategory Category { get; set; } = Category;
+        public string? Category { get; set; }
     }
 }
