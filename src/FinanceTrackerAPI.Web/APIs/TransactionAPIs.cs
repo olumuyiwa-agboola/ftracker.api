@@ -48,7 +48,7 @@ namespace FinanceTrackerAPI.Web.APIs
             return app;
         }
 
-        public static IResult HandleResult<TResult>(TResult result) where TResult : Core.Result.IResult
+        private static IResult HandleResult<TResult>(TResult result) where TResult : Core.Result.IResult
         {
             return result.IsSuccess switch
             {
