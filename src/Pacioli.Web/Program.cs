@@ -1,5 +1,5 @@
-using Scalar.AspNetCore;
 using Pacioli.Web.APIs;
+using Scalar.AspNetCore;
 using Pacioli.Core.Services;
 using Pacioli.Infrastructure.Factories;
 using Pacioli.Infrastructure.Repositories;
